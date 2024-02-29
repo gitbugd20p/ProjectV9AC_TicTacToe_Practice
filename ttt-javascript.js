@@ -5,6 +5,8 @@ let newGame = document.querySelector("#new-game");
 let msgContainer = document.querySelector(".msg-container");
 let turnO = true;
 
+let cnt = 0;
+
 const winnerPattern = [
 	[0, 1, 2],
 	[0, 3, 6],
@@ -20,6 +22,7 @@ const resetGameFunc = () => {
 	turnO = true;
 	enabledButtonAll();
 	msgContainer.classList.add("hide");
+	cnt = 0;
 }
 
 const disableButtonAll = () => {
@@ -34,6 +37,11 @@ const enabledButtonAll = () => {
 		box.innerText = "";
 	}
 };
+
+const gameDraw = () => {
+	msgContainer.classList.remove("hide");
+	msg.innerText = "Draw";
+}
 
 const checkWinner = () => {
 	for(let pattern of winnerPattern){
@@ -63,8 +71,13 @@ boxes.forEach((box) => {
 			box.style.color = "blue";
 			turnO = true;
 		}
+		cnt++;
 		box.disabled = true;
 		checkWinner();
+		let isWinner = checkWinner();
+		if(cnt ===9 && !isWinner){
+			gameDraw();
+		}
 	})
 });
 
