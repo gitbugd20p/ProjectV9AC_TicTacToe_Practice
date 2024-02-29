@@ -24,6 +24,7 @@ p{
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	gap: 2.5vmin;
 }
 
 #msg{
@@ -57,7 +58,6 @@ p{
 	justify-content: center;
 	align-items: center;
 	gap: 3vmin;
-	
 }
 
 .box{
